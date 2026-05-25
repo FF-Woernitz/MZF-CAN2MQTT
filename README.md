@@ -26,24 +26,32 @@ configurable bit fields, and publishes changes to MQTT and/or InfluxDB.
 
 ### Docker (recommended)
 
-```bash
-docker compose up -d
+Create a `docker-compose.yml` in the project directory:
+
+```yaml
+services:
+  can2mqtt:
+    image: ghcr.io/ff-woernitz/mzf-can2mqtt:master
+    container_name: can2mqtt
+    restart: unless-stopped
+    volumes:
+      - ./config.toml:/app/config.toml:ro
 ```
 
-The container is built from the local `Dockerfile`. `config.toml` is mounted read-only
-from the project directory — edit it and restart the container to apply changes.
+Then start it:
 
 ```bash
-docker compose restart
+docker compose up -d
 docker compose logs -f
+docker compose restart   # after editing config.toml
 ```
 
 ### Manual
 
 ```bash
 pip install -r requirements.txt
-python processor.py            # uses config.toml in the current directory
-python processor.py /path/to/config.toml
+python main.py            # uses config.toml in the current directory
+python main.py /path/to/config.toml
 ```
 
 ---
@@ -55,8 +63,8 @@ All settings live in `config.toml`.
 ### Connection
 
 ```toml
-[connection]
-host = "10.2.101.11"   # Waveshare adapter IP
+[can-server]
+host = "192.168.1.1"   # Waveshare adapter IP
 port = 20001
 ```
 
@@ -64,11 +72,11 @@ port = 20001
 
 ```toml
 [mqtt]
-host         = "10.2.1.11"
+host         = "127.0.0.1"
 port         = 1883
 username     = "user"
 password     = "secret"
-topic_prefix = "mzf"   # topics become  <prefix>/<message_name>/<field_name>
+topic_prefix = "can"   # topics become  <prefix>/<message_name>/<field_name>
 # client_id  = "can2mqtt"   # optional, auto-generated if omitted
 ```
 
@@ -78,7 +86,7 @@ Omit the entire `[mqtt]` section to disable MQTT.
 
 ```toml
 [influxdb]
-url    = "http://10.2.1.11:8086"
+url    = "http://127.0.0.1:8086"
 token  = "my-token"
 org    = "my-org"
 bucket = "can_data"
