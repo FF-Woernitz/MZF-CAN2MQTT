@@ -1,0 +1,3 @@
+can-waveshare==0.1.0
+paho-mqtt>=2.1
+influxdb-client>=3.0

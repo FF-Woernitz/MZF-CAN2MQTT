@@ -1,0 +1,438 @@
+[can-server]
+host = "192.168.1.1"
+port = 20001
+
+[mqtt]
+host         = "127.0.0.1"
+port         = 1883
+# client_id  = ""  # optional, auto-generated if omitted
+username     = "user"
+password     = "pass"
+topic_prefix = "topic"
+
+[influxdb]
+url    = "http://127.0.0.1:8086"
+token  = "my-influxdb-token"
+org    = "my-org"
+bucket = "can_data"
+
+[label_maps.button_color]
+"0x0" = "off"
+"0x1" = "red"
+"0x2" = "green"
+"0x3" = "yellow"
+"0x4" = "blue"
+"0x5" = "violet"
+"0x6" = "cyan"
+"0x7" = "white"
+
+[label_maps.switch_state]
+"0x0" = "off"
+"0x1" = "on"
+
+[[messages]]
+can_id = 0xA006
+name   = "keys_front_color"
+
+  [[messages.fields]]
+  name            = "blaulicht"
+  bit_offset      = 0
+  length          = 3
+  label_map = "button_color"
+
+  [[messages.fields]]
+  name            = "blaulicht_heck"
+  bit_offset      = 3
+  length          = 3
+  label_map = "button_color"
+
+  [[messages.fields]]
+  name            = "blaulicht_front"
+  bit_offset      = 6
+  length          = 3
+  label_map = "button_color"
+
+  [[messages.fields]]
+  name            = "rueckwarneinrichtung"
+  bit_offset      = 9
+  length          = 3
+  label_map = "button_color"
+
+  [[messages.fields]]
+  name            = "licht_vorne"
+  bit_offset      = 12
+  length          = 3
+  label_map = "button_color"
+
+  [[messages.fields]]
+  name            = "licht_seite"
+  bit_offset      = 15
+  length          = 3
+  label_map = "button_color"
+
+  [[messages.fields]]
+  name            = "funk"
+  bit_offset      = 18
+  length          = 3
+  label_map = "button_color"
+
+  [[messages.fields]]
+  name            = "spannungsueberwachung"
+  bit_offset      = 21
+  length          = 3
+  label_map = "button_color"
+
+  [[messages.fields]]
+  name            = "landstrom"
+  bit_offset      = 24
+  length          = 3
+  label_map = "button_color"
+
+  [[messages.fields]]
+  name            = "licht"
+  bit_offset      = 27
+  length          = 3
+  label_map = "button_color"
+
+  [[messages.fields]]
+  name            = "einsatzstelletaster"
+  bit_offset      = 32
+  length          = 3
+  label_map = "button_color"
+
+  [[messages.fields]]
+  name            = "pressluft"
+  bit_offset      = 35
+  length          = 3
+  label_map = "button_color"
+
+  [[messages.fields]]
+  name            = "stadt_land"
+  bit_offset      = 38
+  length          = 3
+  label_map = "button_color"
+
+  [[messages.fields]]
+  name            = "horn"
+  bit_offset      = 41
+  length          = 3
+  label_map = "button_color"
+
+[[messages]]
+can_id = 0xA201
+name   = "keys_front_buttons"
+
+  [[messages.fields]]
+  name            = "blaulicht"
+  bit_offset      = 0
+  length          = 1
+  label_map = "switch_state"
+
+  [[messages.fields]]
+  name            = "blaulicht_heck"
+  bit_offset      = 1
+  length          = 1
+  label_map = "switch_state"
+
+  [[messages.fields]]
+  name            = "blaulicht_front"
+  bit_offset      = 2
+  length          = 1
+  label_map = "switch_state"
+
+  [[messages.fields]]
+  name            = "rueckwarneinrichtung"
+  bit_offset      = 3
+  length          = 1
+  label_map = "switch_state"
+
+  [[messages.fields]]
+  name            = "licht_vorne"
+  bit_offset      = 4
+  length          = 1
+  label_map = "switch_state"
+
+  [[messages.fields]]
+  name            = "licht_seite"
+  bit_offset      = 5
+  length          = 1
+  label_map = "switch_state"
+
+  [[messages.fields]]
+  name            = "funk"
+  bit_offset      = 6
+  length          = 1
+  label_map = "switch_state"
+
+  [[messages.fields]]
+  name            = "spannungsueberwachung"
+  bit_offset      = 7
+  length          = 1
+  label_map = "switch_state"
+
+  [[messages.fields]]
+  name            = "landstrom"
+  bit_offset      = 8
+  length          = 1
+  label_map = "switch_state"
+
+  [[messages.fields]]
+  name            = "licht"
+  bit_offset      = 9
+  length          = 1
+  label_map = "switch_state"
+
+  [[messages.fields]]
+  name            = "einsatzstelletaster"
+  bit_offset      = 10
+  length          = 1
+  label_map = "switch_state"
+
+  [[messages.fields]]
+  name            = "pressluft"
+  bit_offset      = 11
+  length          = 1
+  label_map = "switch_state"
+
+  [[messages.fields]]
+  name            = "stadt_land"
+  bit_offset      = 12
+  length          = 1
+  label_map = "switch_state"
+
+  [[messages.fields]]
+  name            = "horn"
+  bit_offset      = 13
+  length          = 1
+  label_map = "switch_state"
+
+[[messages]]
+can_id = 0xF006
+name   = "keys_touch_color"
+
+  [[messages.fields]]
+  name            = "licht_vorne"
+  bit_offset      = 0
+  length          = 3
+  label_map = "button_color"
+
+  [[messages.fields]]
+  name            = "licht_seite"
+  bit_offset      = 3
+  length          = 3
+  label_map = "button_color"
+
+  [[messages.fields]]
+  name            = "pc"
+  bit_offset      = 6
+  length          = 3
+  label_map = "button_color"
+
+  [[messages.fields]]
+  name            = "innenlicht"
+  bit_offset      = 9
+  length          = 3
+  label_map = "button_color"
+
+  [[messages.fields]]
+  name            = "rotlicht"
+  bit_offset      = 12
+  length          = 3
+  label_map = "button_color"
+
+[[messages]]
+can_id = 0xF201
+name   = "keys_touch_buttons"
+
+  [[messages.fields]]
+  name            = "licht_vorne"
+  bit_offset      = 0
+  length          = 1
+  label_map = "switch_state"
+
+  [[messages.fields]]
+  name            = "licht_seite"
+  bit_offset      = 1
+  length          = 1
+  label_map = "switch_state"
+
+  [[messages.fields]]
+  name            = "pc"
+  bit_offset      = 2
+  length          = 1
+  label_map = "switch_state"
+
+  [[messages.fields]]
+  name            = "innenlicht"
+  bit_offset      = 3
+  length          = 1
+  label_map = "switch_state"
+
+  [[messages.fields]]
+  name            = "rotlicht"
+  bit_offset      = 4
+  length          = 1
+  label_map = "switch_state"
+
+[[messages]]
+can_id = 0xB006
+name   = "keys_ap1_color"
+
+  [[messages.fields]]
+  name            = "funk"
+  bit_offset      = 0
+  length          = 3
+  label_map = "button_color"
+
+  [[messages.fields]]
+  name            = "lardis"
+  bit_offset      = 3
+  length          = 3
+  label_map = "button_color"
+
+  [[messages.fields]]
+  name            = "pc"
+  bit_offset      = 6
+  length          = 3
+  label_map = "button_color"
+
+  [[messages.fields]]
+  name            = "licht"
+  bit_offset      = 9
+  length          = 3
+  label_map = "button_color"
+
+[[messages]]
+can_id = 0xB201
+name   = "keys_ap1_buttons"
+
+  [[messages.fields]]
+  name            = "funk"
+  bit_offset      = 0
+  length          = 1
+  label_map = "switch_state"
+
+  [[messages.fields]]
+  name            = "lardis"
+  bit_offset      = 1
+  length          = 1
+  label_map = "switch_state"
+
+  [[messages.fields]]
+  name            = "pc"
+  bit_offset      = 2
+  length          = 1
+  label_map = "switch_state"
+
+  [[messages.fields]]
+  name            = "licht"
+  bit_offset      = 3
+  length          = 1
+  label_map = "switch_state"
+
+[[messages]]
+can_id = 0xC006
+name   = "keys_ap2_color"
+
+  [[messages.fields]]
+  name            = "funk"
+  bit_offset      = 0
+  length          = 3
+  label_map = "button_color"
+
+  [[messages.fields]]
+  name            = "lardis"
+  bit_offset      = 3
+  length          = 3
+  label_map = "button_color"
+
+  [[messages.fields]]
+  name            = "pc"
+  bit_offset      = 6
+  length          = 3
+  label_map = "button_color"
+
+  [[messages.fields]]
+  name            = "licht"
+  bit_offset      = 9
+  length          = 3
+  label_map = "button_color"
+
+[[messages]]
+can_id = 0xC201
+name   = "keys_ap2_buttons"
+
+  [[messages.fields]]
+  name            = "funk"
+  bit_offset      = 0
+  length          = 3
+  label_map = "button_color"
+
+  [[messages.fields]]
+  name            = "lardis"
+  bit_offset      = 3
+  length          = 3
+  label_map = "button_color"
+
+  [[messages.fields]]
+  name            = "pc"
+  bit_offset      = 6
+  length          = 3
+  label_map = "button_color"
+
+  [[messages.fields]]
+  name            = "licht"
+  bit_offset      = 9
+  length          = 3
+  label_map = "button_color"
+
+
+[[messages]]
+can_id = 0xF00A
+name   = "battery"
+
+  [[messages.fields]]
+  name       = "bord_spannung"
+  byte       = 0
+  scale      = 0.1
+  type       = "int32"
+  hysteresis = 0.2
+
+  [[messages.fields]]
+  name       = "bord_strom"
+  byte       = 4
+  scale      = 0.01
+  type       = "int32"
+  hysteresis = 0.2
+
+[[messages]]
+can_id = 0xF00b
+name   = "battery"
+
+  [[messages.fields]]
+  name       = "bord_percent"
+  byte       = 0
+  type       = "int32"
+
+  [[messages.fields]]
+  name       = "start_spannung2"
+  byte       = 4
+  scale      = 0.1
+  type       = "int32"
+  hysteresis = 0.2
+
+[[messages]]
+can_id = 0xF00c
+name   = "battery"
+
+  [[messages.fields]]
+  name       = "start_strom"
+  byte       = 0
+  scale      = 0.01
+  type       = "int32"
+  hysteresis = 0.2
+
+  [[messages.fields]]
+  name       = "start_percent"
+  byte       = 4
+  type       = "int32"
